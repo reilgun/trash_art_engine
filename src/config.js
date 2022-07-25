@@ -5,8 +5,8 @@ const { NETWORK } = require(`${basePath}/constants/network.js`);
 const network = NETWORK.eth;
 
 // General metadata for Ethereum
-const namePrefix = "Your Collection";
-const description = "Remember to replace this description";
+const namePrefix = "Trash";
+const description = "Piles of Trash Collection";
 const baseUri = "ipfs://NewUriToReplace";
 
 const solanaMetadata = {
@@ -24,15 +24,30 @@ const solanaMetadata = {
 // If you have selected Solana then the collection starts from 0 automatically
 const layerConfigurations = [
   {
-    growEditionSizeTo: 5,
+    growEditionSizeTo: 9996,
     layersOrder: [
       { name: "Background" },
-      { name: "Eyeball" },
-      { name: "Eye color" },
-      { name: "Iris" },
-      { name: "Shine" },
-      { name: "Bottom lid" },
-      { name: "Top lid" },
+      { name: "Trash" },
+      { name: "Floor", displayName: "Ground" },
+      { name: "Top" },
+      { name: "Near" },
+      { name: "Sign" },
+      { name: "Flying" },
+      { name: "Bum" },
+    ],
+  },
+  {
+    growEditionSizeTo: 4,
+    layersOrder: [
+      { name: "Background" },
+      { name: "Trash" },
+      { name: "Floor", displayName: "Ground" },
+      { name: "Top" },
+      { name: "Near"},
+      { name: "Sign" },
+      { name: "Flying" },
+      { name: "Bum" },
+      { name: "Legendary" }
     ],
   },
 ];
@@ -42,8 +57,8 @@ const shuffleLayerConfigurations = false;
 const debugLogs = false;
 
 const format = {
-  width: 512,
-  height: 512,
+  width: 2048,
+  height: 2048,
   smoothing: false,
 };
 
@@ -80,7 +95,7 @@ const background = {
 
 const extraMetadata = {};
 
-const rarityDelimiter = "#";
+const rarityDelimiter = "_";
 
 const uniqueDnaTorrance = 10000;
 
