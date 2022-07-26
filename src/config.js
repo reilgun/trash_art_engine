@@ -22,7 +22,7 @@ const layerConfigurations = [
     ],
   },
   {
-    growEditionSizeTo: 4,
+    growEditionSizeTo: 10000,
     layersOrder: [
       { name: "Background" },
       { name: "Trash" },
@@ -89,7 +89,6 @@ module.exports = {
   background,
   uniqueDnaTorrance,
   layerConfigurations,
-  rarityDelimiter,
   preview,
   shuffleLayerConfigurations,
   debugLogs,

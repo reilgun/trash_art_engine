@@ -302,16 +302,22 @@ const startCreating = async () => {
   ) {
     abstractedIndexes.push(i);
   }
+  console.log(abstractedIndexes.length)
+
   if (shuffleLayerConfigurations) {
     abstractedIndexes = shuffle(abstractedIndexes);
   }
+
   debugLogs
     ? console.log("Editions left to create: ", abstractedIndexes)
     : null;
+
+  
   while (layerConfigIndex < layerConfigurations.length) {
     const layers = layersSetup(
       layerConfigurations[layerConfigIndex].layersOrder
     );
+    
     while (
       editionCount <= layerConfigurations[layerConfigIndex].growEditionSizeTo
     ) {
