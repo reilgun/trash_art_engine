@@ -11,7 +11,6 @@ const {
   background,
   uniqueDnaTorrance,
   layerConfigurations,
-  rarityDelimiter,
   shuffleLayerConfigurations,
   debugLogs,
   extraMetadata,
@@ -35,15 +34,13 @@ const buildSetup = () => {
   fs.mkdirSync(`${buildDir}/images`);
 };
 
-const getRarityWeight = (_str) => {
+const getElementNumber = (_str) => {
   let nameWithoutExtension = _str.slice(0, -4);
-  var nameWithoutWeight = Number(
-    nameWithoutExtension.split(rarityDelimiter).pop()
-  );
-  if (isNaN(nameWithoutWeight)) {
-    nameWithoutWeight = 1;
+  var elementNumber = Number(nameWithoutExtension);
+  if (isNaN(elementNumber)) {
+    throw "Invalid element"
   }
-  return nameWithoutWeight;
+  return elementNumber;
 };
 
 const cleanDna = (_str) => {
@@ -52,27 +49,21 @@ const cleanDna = (_str) => {
   return dna;
 };
 
-const cleanName = (_str) => {
-  let nameWithoutExtension = _str.slice(0, -4);
-  var nameWithoutWeight = nameWithoutExtension.split(rarityDelimiter).shift();
-  return nameWithoutWeight;
-};
-
 const getElements = (path) => {
   return fs
     .readdirSync(path)
     .filter((item) => !/(^|\/)\.[^\/\.]/g.test(item))
-    .sort((a, b) => getRarityWeight(a) - getRarityWeight(b))
+    .sort((a, b) => getElementNumber(a) - getElementNumber(b))
     .map((i, index) => {
       if (i.includes("-")) {
         throw new Error(`layer name can not contain dashes, please fix: ${i}`);
       }
       return {
         id: index,
-        name: getRarityWeight(i),
+        name: getElementNumber(i),
         filename: i,
         path: `${path}${i}`,
-        weight: getRarityWeight(i),
+        weight: getElementNumber(i),
       };
     });
 };

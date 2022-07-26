@@ -73,8 +73,6 @@ const background = {
 
 const extraMetadata = {};
 
-const rarityDelimiter = "_";
-
 const uniqueDnaTorrance = 10000;
 
 const preview = {
