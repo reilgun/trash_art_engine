@@ -62,14 +62,14 @@ const getElements = (path) => {
   return fs
     .readdirSync(path)
     .filter((item) => !/(^|\/)\.[^\/\.]/g.test(item))
-    .sort()
+    .sort((a, b) => getRarityWeight(a) - getRarityWeight(b))
     .map((i, index) => {
       if (i.includes("-")) {
         throw new Error(`layer name can not contain dashes, please fix: ${i}`);
       }
       return {
         id: index,
-        name: cleanName(i),
+        name: getRarityWeight(i),
         filename: i,
         path: `${path}${i}`,
         weight: getRarityWeight(i),
